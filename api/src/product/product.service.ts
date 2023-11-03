@@ -94,10 +94,10 @@ export class ProductService {
     if (dto.ids && dto.ids.length) query._id = { $in: dto.ids };
     if(dto.name) query.name = dto.name;
     if (dto.priceFrom) {
-      query.createdAt = { $gte: dto.priceFrom };
+      query.price = { $gte: dto.priceFrom };
     }
     if (dto.priceTo) {
-      query.closedDate = { $lte: dto.priceTo };
+      query.price = { $lte: dto.priceTo };
     }
     const products = await this.model
       .find(query)
